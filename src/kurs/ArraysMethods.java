@@ -71,23 +71,19 @@ public class ArraysMethods {
 
     private void quickSort(String[] arr, int low, int high) {
         if (low >= high) return;
-        // выбрать опорный элемент
         int middle = low + (high - low) / 2;
-        String opora = arr[middle];
-        // разделить на подмассивы, который больше и меньше опорного элемента
+        String onMiddle = arr[middle];
         int i = low;
         int j = high;
         while (i <= j) {
-            while (arr[i].compareTo(opora) < 0) i++;
-            while (arr[j].compareTo(opora) > 0) j--;
-            //меняем местами
+            while (arr[i].compareTo(onMiddle) < 0) i++;
+            while (arr[j].compareTo(onMiddle) > 0) j--;
             if (i <= j) {
                 swap(arr, i, j);
                 i++;
                 j--;
             }
         }
-        // вызов рекурсии для сортировки левой и правой части
         if (low < j) quickSort(arr, low, j);
         if (high > i) quickSort(arr, i, high);
     }
